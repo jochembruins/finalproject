@@ -5,7 +5,7 @@
 'Verwarde man wandelt met mes door centrum van Kampen', en 'Verwarde persoon gooit meubilair op straat'. Bijna dagelijks halen soortgelijke koppen de nationale kranten. Als we de krantenkoppen moeten geloven, loopt Nederland over van verwarde personen. De meestgenoemde veroorzaker van dit probleem: bezuinigingen op de GGZ. 
 
 ## Oplossing
-Mijn datavisualitatie onderzoekt of er daadwerkelijk een toename is van verwarde personen en laat zien of deze inderdaad komt door de bezuinigingen in de GGZ. 
+Mijn datavisualitatie onderzoekt of er daadwerkelijk een toename is van incidenten met verwarde personen en laat zien of deze toename mogelijk samenhangt met de bezuinigingen op de GGZ.
 
 ### Sketch
 
