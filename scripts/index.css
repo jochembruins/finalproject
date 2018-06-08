@@ -27,3 +27,18 @@
 		height:auto;
 	} 
 }
+
+path {
+	stroke-width: 3;
+	fill: none;
+}
+
+.line {
+	stroke: #91bfdb;
+}
+
+.axis line,
+.axis path {
+  stroke: rgb(210, 210, 210);
+  stroke-width: 1.2;
+}

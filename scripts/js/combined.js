@@ -53,62 +53,52 @@ function getFrequency(data) {
 
 
 function makeLine(data){
-	var svg = d3.select("svg"),
-	    margin = {top: 30, right: 50, bottom: 30, left: 50},
-	    width = svg.attr("width") - margin.left - margin.right,
-	    height = svg.attr("height") - margin.top - margin.bottom,
-	    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    margin = {top: 30, right: 50, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
+    var svg = d3.select("#containercombi")
+    	.append("svg")
+    	.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	var x = d3.scaleTime().range([0, width]),
-	    y = d3.scaleLinear().range([height, 0]),
+	x = d3.scaleTime()
+		.range([0, width])
+		.domain(d3.extent(data, function(d) { return d.DATE; }));
 
-	var line = d3.line()
-	    .curve(d3.curveBasis)
-	    .x(function(d) { return x(d.DATE); })
-	    .y(function(d) { return y(d.FREQUENCY); });
+	y = d3.scaleLinear()
+		.range([height, 0])
+		.domain([0, d3.max(data, function(d) { return d.FREQUENCY; })]);
 
+	var tickLabels = ['2011','Q2','Q3','Q4','2012','Q2','Q3','Q4','2013','Q2','Q3','Q4','2014','Q2','Q3','Q4','2015','Q2','Q3','Q4','2016','Q2','Q3','Q4','2017','Q2','Q3','Q4','2018','Q2']
+	xAxis = d3.axisBottom(x)
+		.ticks(30)
+		.tickSize(-height, 0, 0)
+		.tickFormat(function(d,i){ return tickLabels[i] });	
 
-	x.domain(d3.extent(data, function(d) { return d.DATE; }));
-
-	y.domain([
-	    d3.min(cities, function(c) { return d3.min(c.values, function(d) { return d.temperature; }); }),
-	    d3.max(cities, function(c) { return d3.max(c.values, function(d) { return d.temperature; }); })
-	  ]);
-
-	  z.domain(cities.map(function(c) { return c.id; }));
-
-	  g.append("g")
-	      .attr("class", "axis axis--x")
-	      .attr("transform", "translate(0," + height + ")")
-	      .call(d3.axisBottom(x));
-
-	  g.append("g")
-	      .attr("class", "axis axis--y")
-	      .call(d3.axisLeft(y))
-	    .append("text")
-	      .attr("transform", "rotate(-90)")
-	      .attr("y", 6)
-	      .attr("dy", "0.71em")
-	      .attr("fill", "#000")
-	      .text("Temperature, ºF");
-
-	  var city = g.selectAll(".city")
-	    .data(cities)
-	    .enter().append("g")
-	      .attr("class", "city");
-
-	  city.append("path")
-	      .attr("class", "line")
-	      .attr("d", function(d) { return line(d.values); })
-	      .style("stroke", function(d) { return z(d.id); });
-
-	  city.append("text")
-	      .datum(function(d) { return {id: d.id, value: d.values[d.values.length - 1]}; })
-	      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
-	      .attr("x", 3)
-	      .attr("dy", "0.35em")
-	      .style("font", "10px sans-serif")
-	      .text(function(d) { return d.id; });
+	yAxis = d3.axisLeft(y)
+		.ticks(12)
+		.tickSize(width / 100)
 	
+	svg.append("g")
+		.attr("class", "axis") 
+		.call(xAxis)
+		.attr("transform", "translate(0," + (height) + ")");
+
+	svg.append("g")
+		.attr("class", "axis") 
+		.call(yAxis)
+
+	// Define the three lines
+	line = d3.line()
+		.curve(d3.curveBasis)
+		.x(function(d) { return x(d.DATE); })
+		.y(function(d) { return y(d.FREQUENCY); });
+
+	svg.append("path")
+
+		.attr("d", line(data))
+		.attr("class", "line");
 }
