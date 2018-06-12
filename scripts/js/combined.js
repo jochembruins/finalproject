@@ -7,10 +7,11 @@
 */
 
 function prepData (error, response) {
-	dataE33 = response[0];
+	dataE33 = response[0].data;
 	dataMedia = response[1].data;
+	dataMap = response[2].data;
 
-	console.log(dataMedia)
+	console.log(dataMap)
 
 	var parseTime = d3.timeParse("%Y-%m-%d");
 	
@@ -20,6 +21,13 @@ function prepData (error, response) {
 		d.DATE.setDate(1);
 		d.DATE.setMonth(quarter);
 	})
+
+	var parseYear = d3.timeParse("%Y");
+	
+	dataE33.forEach(function(d) {
+		d.YEAR = parseYear(d.YEAR);
+	})
+	
 	getFrequency(dataMedia)
 }
 
@@ -64,11 +72,11 @@ function makeLine(data){
 		.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	x = d3.scaleTime()
+	var x = d3.scaleTime()
 		.range([0, width])
 		.domain(d3.extent(data, function(d) { return d.DATE; }));
 
-	y = d3.scaleLinear()
+	var y = d3.scaleLinear()
 		.range([height, 0])
 		.domain([0, d3.max(data, function(d) { return d.FREQUENCY; })]);
 
@@ -98,7 +106,36 @@ function makeLine(data){
 		.y(function(d) { return y(d.FREQUENCY); });
 
 	svg.append("path")
-
 		.attr("d", line(data))
 		.attr("class", "line");
+}
+
+function updateCombi() {
+	svg = d3.select("g")
+	console.log(dataE33)
+
+	var x = d3.scaleBand()
+		.range([0, width * (29/30)])
+		.domain(dataE33.map(function(d) { return d.YEAR; }))
+		.paddingInner(0.05);
+    	
+    var y = d3.scaleLinear()
+    	.rangeRound([height, height/2])
+    	.domain([0, d3.max(dataE33, function(d) { return d.AMOUNT; })]);
+
+	var rect = svg.selectAll("rect")
+      	.data(dataE33)
+		.enter()
+		.append("rect")
+      	.attr("class", "bar")
+		.attr("y", function(d) { return height; })
+		.attr("x", function(d){ return x(d.YEAR); })
+		.transition().delay(function (d,i){ return i * 100;})
+ 		.duration(100)
+      	.attr("width", function(d){ return x.bandwidth(); })
+      	.attr("y", function(d){ return y(d.AMOUNT); })
+      	.attr("height", function(d){ return height - y(d.AMOUNT); });
+
+    showMap()
+
 }

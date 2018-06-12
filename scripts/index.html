@@ -5,11 +5,15 @@
 <link rel="stylesheet" type="text/css" href="index.css">
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://d3js.org/queue.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/combined.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="http://rawgithub.com/markmarkoh/datamaps/master/dist/datamaps.none.min.js"></script>
 </script>
 </head>
 <body>
@@ -30,9 +34,22 @@
   </nav>
     
   <div class="container-fluid text-center">    
-    <div class="row content">
+    <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div id="containercombi"></div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <button type="button" class="btn btn-primary btn-block" onclick="updateCombi()">Laat het aantal E33-meldingen per jaar zien</button>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+          <div id="svgContainer" style="visibility:hidden;">
+            <object id="svgmap" data="/data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
+            </svg>
+          </div>
         </div>
     </div>
   </div>

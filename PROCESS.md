@@ -6,3 +6,16 @@
 * Problemen met het omzettten van data naar kwartalen. Geen functie voor dus zelf moeten maken.
 * Ook het verkrijgen van de frequenties dat een bepaalde datum voorkomt in een array is lastig. 
 * Kleine achterstand door opgelopen.
+
+### Dag 5
+* Vandaag idee gepitcht voor de klas. Positieve feedback
+* Gewerkt aan gecombineerde grafiek. Is bijna af. 
+* Begonnen aan datamap. Werkt nog niet. 
+
+### Dag 6
+* Datamap werkte niet met zelfgemaakte TOPOJSON. 
+* Uiteindelijk werkt het met een al bestaande SVG. 
+* Lastig om de gemeentes (aparte SVG-elementen) aan te spreken vanuit Javascript.
+* Uiteindelijk gelukt om de kleur te veranderen. 
+* Volgende uitdaging: Hoover!
+
