@@ -29,7 +29,7 @@
 }
 
 path {
-	stroke-width: 3;
+	stroke-width: 3!important;
 	fill: none;
 }
 
@@ -44,21 +44,15 @@ path {
 }
 
 .bar {
-  fill: rgba(239, 138, 98, 0.8);
-  stroke: rgb(202, 0 ,32);
+  fill: rgb(242, 208, 127);
+}
+
+.bar:hover {
+  fill: rgb(233, 157, 75);
 }
 
 .gemeente {
-  fill: #ccc;
-  stroke: black;
-  stroke-width: .5px;
+	stroke-width:2;
 }
 
-path:hover, circle:hover {
-  stroke: #002868 !important;
-  stroke-width:2px;
-  stroke-linejoin: round;
-  fill: #002868 !important;
-  cursor: pointer;
-}
 

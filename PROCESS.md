@@ -19,3 +19,10 @@
 * Uiteindelijk gelukt om de kleur te veranderen. 
 * Volgende uitdaging: Hoover!
 
+### Dag 7
+* Hoover over datamap werkt. 
+* Onclick-functie werkt ook.
+* Gekoppeld aan vandaag gebouwde staafdiagram.
+* Update uiteindelijk ook werkzaam gekregen.
+* Vandaag was een productieve dag!
+

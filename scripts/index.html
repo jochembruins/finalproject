@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/combined.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/bar.js"></script>
 <script type="text/javascript" src="http://rawgithub.com/markmarkoh/datamaps/master/dist/datamaps.none.min.js"></script>
 </script>
 </head>
@@ -45,11 +46,13 @@
       </div>
     </div>
       <div class="row">
-        <div class="col-sm-6 col-sm-offset-2">
+        <div class="col-sm-5 col-sm-offset-1">
           <div id="svgContainer" style="visibility:hidden;">
             <object id="svgmap" data="/data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
-            </svg>
           </div>
+        </div>
+        <div class="col-sm-3">
+         <div id="containerbar"></div>
         </div>
     </div>
   </div>

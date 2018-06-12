@@ -27,3 +27,9 @@ function getData() {
 		.defer(d3.json, dataMap)
 		.awaitAll(prepData);
 };
+
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+  this.parentNode.appendChild(this);
+  });
+};

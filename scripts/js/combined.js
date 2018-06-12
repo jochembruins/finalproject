@@ -136,6 +136,9 @@ function updateCombi() {
       	.attr("y", function(d){ return y(d.AMOUNT); })
       	.attr("height", function(d){ return height - y(d.AMOUNT); });
 
+	svg.select(".line")
+		.moveToFront()
+    
     showMap()
 
 }
