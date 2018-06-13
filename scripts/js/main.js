@@ -8,6 +8,7 @@
 
 window.onload = function() {
 	getData();
+	makeMap();
 };
 
  
@@ -33,3 +34,5 @@ d3.selection.prototype.moveToFront = function() {
   this.parentNode.appendChild(this);
   });
 };
+
+

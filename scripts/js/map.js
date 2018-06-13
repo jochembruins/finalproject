@@ -9,11 +9,10 @@ function showMap() {
 
 
 function makeMap() { 
-
+    // if (window.loaded == false) {
+    //     setTimeout(makeMap, 100);
     var svgMap = d3.select(document.getElementById("svgmap").contentDocument);
-    if(svgMap.empty()) {
-        setTimeout(makeMap, 100);
-    } else {
+    // } else {
         console.log(svgMap)
         var svgItem = svgMap.select("#gemeentes");
         console.log(svgItem)
@@ -63,7 +62,7 @@ function makeMap() {
             .on("click", getId)
             .on("mouseover", mouseOver)
             .on("mouseout", mouseOut);
-    };   
+    // };   
 }
 
 function mouseOver(d, i) {  
