@@ -14,6 +14,7 @@ function makeMap() {
     var svgItem = svg.select("#gemeentes");
     console.log(svgItem)
     gemeentes = svgItem.selectAll("path");
+    console.log(gemeentes)
     gemeentesJs = gemeentes._groups[0]
 
     colorScale = d3.scaleLinear()
@@ -33,24 +34,25 @@ function makeMap() {
         
 
         //loop through json regions to find right region
-        for (var j = 0; j < gemeentesJs.length; j++){
+        gemeentes.each(function (d) {
+            
+            selection = d3.select(this)
             //where adm1 codes match, attach csv to json object     
-            if (gemeentesJs[j].id == id){
-                console.log('hallo')
-                      
+            if (selection.attr("id") == id){
+
                  // assign all five key/value pairs            
-                  gemeentesJs[j]['2013'] = gemeenteData.R2013;                  
-                  gemeentesJs[j]['2014'] = gemeenteData.R2014;
-                  gemeentesJs[j]['2015'] = gemeenteData.R2015;
-                  gemeentesJs[j]['2016'] = gemeenteData.R2016;
-                  gemeentesJs[j]['2017'] = gemeenteData.R2017;
-                  gemeentesJs[j].setAttribute("class", "gemeente");
-                  gemeentesJs[j].style.fill = colorScale(Math.round(parseFloat(gemeentesJs[j]['2017'])));
+                selection.attr("R2013", gemeenteData.R2013);                 
+                selection.attr("R2014", gemeenteData.R2014);
+                selection.attr("R2015", gemeenteData.R2015);
+                selection.attr("R2016", gemeenteData.R2016);
+                selection.attr("R2017", gemeenteData.R2017);
+                selection.attr("class", "gemeente");
+                selection.style("fill", colorScale(Math.round(parseFloat(selection.attr("R2017")))));
 
         
-                  break; //stop looking through the json regions
+                  
             };
-        };
+        });
     
     };
     
