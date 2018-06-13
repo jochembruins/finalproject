@@ -14,8 +14,7 @@ function makeMap() {
     if(svgMap.empty()) {
         setTimeout(makeMap, 100);
     } else {
-
-        console.log(svg)
+        console.log(svgMap)
         var svgItem = svgMap.select("#gemeentes");
         console.log(svgItem)
         var gemeentes = svgItem.selectAll("path");
@@ -36,15 +35,13 @@ function makeMap() {
             var gemeenteData = dataMap[i]; //the current region
             var id = gemeenteData.CODE; //adm1 code
             
-            console.log('loop1')
             //loop through json regions to find right region
             gemeentes.each(function (d, i) {
-                console.log('loop2')  
+
                 selection = d3.select(this)
                 //where adm1 codes match, attach csv to json object     
                 if (selection.attr("id") == id){
 
-                    console.log('loop3')
                      // assign all five key/value pairs            
                     selection.attr("R2013", gemeenteData.R2013);                 
                     selection.attr("R2014", gemeenteData.R2014);
