@@ -11,6 +11,7 @@ function showMap() {
 function makeMap() { 
 
     var svg = d3.select(document.getElementById("svgmap").contentDocument);
+    console.log(svg)
     var svgItem = svg.select("#gemeentes");
     console.log(svgItem)
     var gemeentes = svgItem.selectAll("path");
