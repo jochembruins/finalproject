@@ -16,7 +16,7 @@ function makeMap() {
         console.log(svgMap)
         var svgItem = svgMap.select("#gemeentes");
         console.log(svgItem)
-        var gemeentes = svgItem.selectAll("path");
+        gemeentes = svgItem.selectAll("path");
         console.log(gemeentes)
 
         colorScale = d3.scaleLinear()
@@ -95,12 +95,14 @@ function updateMap(year) {
     // updates the current yearabove the map
     d3.select("#slideroutput").html(year);
 
-    // // filters data for selected year
-    // dataYear = dataMain.filter(function(x) {return x.YEAR.getFullYear() == year});
+        gemeentes.each(function (d, i) {
+            selection = d3.select(this)   
+            selection.style("fill", colorScale(Math.round(parseFloat(selection.attr("R"+year)))));
+
     
-    // // reload plot with filtered data for that year (update function was not working)
-    // var map = d3.select("svg")
-    //     .remove(makeDataMap(dataYear));
+              
+        });
+    
 };
 
 
