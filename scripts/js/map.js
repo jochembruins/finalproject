@@ -1,6 +1,6 @@
 
 function showMap() {
-    var div = document.getElementById("svgContainer");
+    var div = document.getElementById("mapbar");
     div.style.visibility = "visible";
 
     makeMap()
@@ -20,9 +20,9 @@ function makeMap() {
         console.log(gemeentes)
 
         colorScale = d3.scaleLinear()
-            .domain([0, 5])
+            .domain([1, 5])
             .interpolate(d3.interpolateHcl)
-            .range([d3.rgb('#4575b4'), d3.rgb('#ffffbf')])
+            .range([d3.rgb('#ffffbf'), d3.rgb('#4575b4')])
             .clamp(true);
 
         //loop through csv to assign each csv values to json region
