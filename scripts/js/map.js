@@ -15,7 +15,6 @@ function makeMap() {
     console.log(svgItem)
     gemeentes = svgItem.selectAll("path");
     console.log(gemeentes)
-    gemeentesJs = gemeentes._groups[0]
 
     colorScale = d3.scaleLinear()
         .domain([d3.min(dataMap, function(d) { 
@@ -40,6 +39,7 @@ function makeMap() {
             //where adm1 codes match, attach csv to json object     
             if (selection.attr("id") == id){
 
+                console.log('hoi')
                  // assign all five key/value pairs            
                 selection.attr("R2013", gemeenteData.R2013);                 
                 selection.attr("R2014", gemeenteData.R2014);
