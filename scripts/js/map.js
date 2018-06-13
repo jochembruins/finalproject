@@ -16,51 +16,52 @@ function makeMap() {
     var gemeentes = svgItem.selectAll("path");
     console.log(gemeentes)
 
-    colorScale = d3.scaleLinear()
-        .domain([d3.min(dataMap, function(d) { 
-            return parseFloat(d.R2017); 
-        }), 5,  
-        d3.max(dataMap, function(d) { 
-            return parseFloat(d.R2017); 
-        })])
-        .interpolate(d3.interpolateHcl)
-        .range([d3.rgb('#4575b4'), d3.rgb('#ffffbf'), d3.rgb('#d73027')]);
 
-    //loop through csv to assign each csv values to json region
-    for (var i=0; i < dataMap.length; i++) {      
-        var gemeenteData = dataMap[i]; //the current region
-        var id = gemeenteData.CODE; //adm1 code
+    // colorScale = d3.scaleLinear()
+    //     .domain([d3.min(dataMap, function(d) { 
+    //         return parseFloat(d.R2017); 
+    //     }), 5,  
+    //     d3.max(dataMap, function(d) { 
+    //         return parseFloat(d.R2017); 
+    //     })])
+    //     .interpolate(d3.interpolateHcl)
+    //     .range([d3.rgb('#4575b4'), d3.rgb('#ffffbf'), d3.rgb('#d73027')]);
+
+    // //loop through csv to assign each csv values to json region
+    // for (var i=0; i < dataMap.length; i++) {      
+    //     var gemeenteData = dataMap[i]; //the current region
+    //     var id = gemeenteData.CODE; //adm1 code
         
-        console.log('loop1')
-        //loop through json regions to find right region
-        gemeentes.each(function (d, i) {
-            console.log('loop2')  
-            selection = d3.select(this)
-            //where adm1 codes match, attach csv to json object     
-            if (selection.attr("id") == id){
+    //     console.log('loop1')
+    //     //loop through json regions to find right region
+    //     gemeentes.each(function (d, i) {
+    //         console.log('loop2')  
+    //         selection = d3.select(this)
+    //         //where adm1 codes match, attach csv to json object     
+    //         if (selection.attr("id") == id){
 
-                console.log('loop3')
-                 // assign all five key/value pairs            
-                selection.attr("R2013", gemeenteData.R2013);                 
-                selection.attr("R2014", gemeenteData.R2014);
-                selection.attr("R2015", gemeenteData.R2015);
-                selection.attr("R2016", gemeenteData.R2016);
-                selection.attr("R2017", gemeenteData.R2017);
-                selection.attr("class", "gemeente");
-                selection.style("fill", colorScale(Math.round(parseFloat(selection.attr("R2017")))));
+    //             console.log('loop3')
+    //              // assign all five key/value pairs            
+    //             selection.attr("R2013", gemeenteData.R2013);                 
+    //             selection.attr("R2014", gemeenteData.R2014);
+    //             selection.attr("R2015", gemeenteData.R2015);
+    //             selection.attr("R2016", gemeenteData.R2016);
+    //             selection.attr("R2017", gemeenteData.R2017);
+    //             selection.attr("class", "gemeente");
+    //             selection.style("fill", colorScale(Math.round(parseFloat(selection.attr("R2017")))));
 
         
                   
-            };
-        });
+    //         };
+    //     });
     
-    };
+    // };
     
-    gemeentes
-        .style("stroke-width", "0.5")
-        .on("click", getId)
-        .on("mouseover", mouseOver)
-        .on("mouseout", mouseOut);
+    // gemeentes
+    //     .style("stroke-width", "0.5")
+    //     .on("click", getId)
+    //     .on("mouseover", mouseOver)
+    //     .on("mouseout", mouseOut);
     
 }
 
