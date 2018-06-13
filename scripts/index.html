@@ -43,6 +43,14 @@
         <button type="button" class="btn btn-primary btn-block" onclick="updateCombi()">Laat het aantal E33-meldingen per jaar zien</button>
       </div>
     </div>
+    <div class="row top-buffer">
+      <div class="col-sm-2 col-sm-offset-1">
+        <div class="""slidecontainer">
+          <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
+          <span id="slideroutput">Current year: <span id="slidertext">2014</span></span>
+        </div>
+      </div>
+    </div>
       <div class="row">
         <div class="col-sm-5 col-sm-offset-1">
           <div id="svgContainer" style="visibility:hidden;">

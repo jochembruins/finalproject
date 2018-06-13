@@ -85,8 +85,22 @@ function getId(d, i) {
     // Use D3 to select element, change color and size
     gemeente = d3.select(this).attr('id')
 
-    dataBar(gemeente)        
-        
+    dataBar(gemeente)            
 }
+
+/*
+* Updates the map when slider is changed.
+*/
+function updateMap(year) {
+    // updates the current yearabove the map
+    d3.select("#slideroutput").html(year);
+
+    // // filters data for selected year
+    // dataYear = dataMain.filter(function(x) {return x.YEAR.getFullYear() == year});
+    
+    // // reload plot with filtered data for that year (update function was not working)
+    // var map = d3.select("svg")
+    //     .remove(makeDataMap(dataYear));
+};
 
 
