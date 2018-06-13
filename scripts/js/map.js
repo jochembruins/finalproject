@@ -13,7 +13,7 @@ function makeMap() {
     var svg = d3.select(document.getElementById("svgmap").contentDocument);
     var svgItem = svg.select("#gemeentes");
     console.log(svgItem)
-    gemeentes = svgItem.selectAll("path");
+    var gemeentes = svgItem.selectAll("path");
     console.log(gemeentes)
 
     colorScale = d3.scaleLinear()
