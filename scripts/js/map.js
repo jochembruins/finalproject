@@ -20,14 +20,10 @@ function makeMap() {
         console.log(gemeentes)
 
         colorScale = d3.scaleLinear()
-            .domain([d3.min(dataMap, function(d) { 
-                return parseFloat(d.R2017); 
-            }), 5,  
-            d3.max(dataMap, function(d) { 
-                return parseFloat(d.R2017); 
-            })])
+            .domain([0, 5])
             .interpolate(d3.interpolateHcl)
-            .range([d3.rgb('#4575b4'), d3.rgb('#ffffbf'), d3.rgb('#d73027')]);
+            .range([d3.rgb('#4575b4'), d3.rgb('#ffffbf')])
+            .clamp(true);
 
         //loop through csv to assign each csv values to json region
         for (var i=0; i < dataMap.length; i++) {      
