@@ -33,7 +33,7 @@ function makeMap() {
         
         console.log('loop1')
         //loop through json regions to find right region
-        gemeentes.each(function (d) {
+        gemeentes.each(function (d, i) {
             console.log('loop2')  
             selection = d3.select(this)
             //where adm1 codes match, attach csv to json object     
