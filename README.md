@@ -1,6 +1,9 @@
 # Projectvoorstel - Jochem Bruins
 ## Eindproject MPROG
 
+## Link
+https://jochembruins.github.io/finalproject/scripts/index.html
+
 ## Probleemstelling 
 'Verwarde man wandelt met mes door centrum van Kampen', en 'Verwarde persoon gooit meubilair op straat'. Bijna dagelijks halen soortgelijke koppen de nationale kranten. Als we de krantenkoppen moeten geloven, loopt Nederland over van verwarde personen. De meestgenoemde veroorzaker van dit probleem: bezuinigingen op de GGZ. 
 
