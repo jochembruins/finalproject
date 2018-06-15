@@ -26,3 +26,14 @@
 * Update uiteindelijk ook werkzaam gekregen.
 * Vandaag was een productieve dag!
 
+### Dag 8
+* Niet echt een productieve dag.
+* Veel tijd verloren aan een '/' waardoor een pad naar een bestand niet klopte. Dit werkte in localhost wel, maar op Github Pages niet. Uiteindelijk gefixt.
+* Werkende slider gemaakt. Verandert het jaar van de map.
+
+### Dag 9
+* Scatterplot staat! Nog geen interactie met andere visualisaties.
+* Lang bezig geweest om tooltip zichbaar te krijgen. 
+
+
+

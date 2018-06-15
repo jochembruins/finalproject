@@ -10,10 +10,10 @@ import csv
 import json
 
 # open CSV  
-csvfile = open('dataMap.csv', 'r', encoding = 'utf-8-sig')  
+csvfile = open('dataPlot.csv', 'r', encoding = 'utf-8-sig')  
 
 # declare field names
-reader = csv.DictReader(csvfile, delimiter = ';', fieldnames = ("CITY", "CODE", "2013", "2014", "2015", "2016", "2017", "R2013", "R2014", "R2015", "R2016", "R2017"))  
+reader = csv.DictReader(csvfile, delimiter = ';', fieldnames = ("CODE", "CITY", "E33", "GGZ"))  
 
 # parse CSV into JSON  
 output = json.dumps([row for row in reader])  
@@ -21,7 +21,7 @@ output = json.dumps([row for row in reader])
 print("JSON parsed!")  
 
 # save  JSON  
-f = open('dataMap.json', 'w')  
+f = open('dataPlot.json', 'w')  
 f.write('{"data":' + output + '}')  
 
 print("JSON saved!")

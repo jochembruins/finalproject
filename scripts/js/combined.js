@@ -10,6 +10,8 @@ function prepData (error, response) {
 	dataE33 = response[0].data;
 	dataMedia = response[1].data;
 	dataMap = response[2].data;
+	dataPlot = response[3].data;
+
 
 	console.log(dataMap)
 
@@ -140,5 +142,6 @@ function updateCombi() {
 		.moveToFront()
     
     showMap()
+    prepPlot()
 
 }

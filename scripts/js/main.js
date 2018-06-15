@@ -20,12 +20,14 @@ function getData() {
 	var dataE33 = 'data/dataE33.json';
 	var dataMedia = 'data/dataMedia.json';
 	var dataMap = 'data/dataMap.json';
+	var dataPlot= 'data/dataPlot.json';
 
-	// request both datafiles and wait till both loaded
-	queue(3)
+	// request all datafiles and wait till both loaded
+	queue(4)
 		.defer(d3.json, dataE33)
 		.defer(d3.json, dataMedia)
 		.defer(d3.json, dataMap)
+		.defer(d3.json, dataPlot)
 		.awaitAll(prepData);
 };
 
