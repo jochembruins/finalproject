@@ -67,6 +67,22 @@ function mouseOver(d, i) {
     d3.select(this)
         .moveToFront()
         .style("stroke-width", "1.5");
+
+    id = this.id
+
+    d3.selectAll('circle')
+        .filter(function(a) {
+            return (id !== a.CODE);
+        })
+        .style('opacity', 0.4);
+
+    d3.selectAll('circle')
+        .filter(function(a) {
+            return (id === a.CODE);
+        })
+        .transition()
+        .duration(300)
+        .attr("r", "8");
         
 }
 
@@ -74,6 +90,12 @@ function mouseOut(d, i) {
     // Use D3 to select element, change color back to normal
     d3.select(this)
         .style("stroke-width", "0.5");
+
+    d3.selectAll('circle')
+        .style('opacity', 1)
+        .transition()
+        .duration(300)
+        .attr("r", "3");
         
 }
 

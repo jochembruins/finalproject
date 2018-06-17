@@ -97,9 +97,8 @@ path {
 
 .tooltips {
     position: absolute;
-    font-size: 12px;
+    font-size: 16px;
     width: auto;
     height: auto;
     pointer-events: none;
-    background-color: white;
 }

@@ -47,7 +47,7 @@ function makePlot(data) {
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-     var tooltip = d3.select("body")
+    tooltip = d3.select("body")
      	.append("div")
         .attr("class", "tooltips");
 	
@@ -56,6 +56,7 @@ function makePlot(data) {
 		.data(data)
 		.enter()
 		.append("circle")
+		.attr("class", "circle")
 		.attr("cx", function(d) {
         	return xPlot(d.E33);
    		})
@@ -64,20 +65,9 @@ function makePlot(data) {
    		})
    		.attr("r", "3")
    		// show tooltip when mouse is on circle
-		.on("mouseover", function(d){
-			return tooltip
-				.style("visibility", "visible")
-				.html('<p>' + d.CITY + '</p>');
-			})
-		.on("mousemove", function(d) {
-			return tooltip
-				.style("top", (event.pageY-10)+"px")
-				.style("left",(event.pageX+10)+"px")
-			;})
-		.on("mouseout", function(d) {
-			return tooltip
-				.style("visibility", "hidden");
-			});
+		.on("mouseover", mouseOverPlot)
+		.on("mousemove", mouseMovePlot)
+		.on("mouseout", mouseOutPlot);
 
 	// draw X-axis
 	svg.append("g")
@@ -89,6 +79,56 @@ function makePlot(data) {
 	svg.append("g")
 		.call(yAxisPlot);
 
+}
 
 
+function mouseOverPlot(d) {  
+
+	var circleUnderMouse = this 
+	
+	d3.selectAll('.circle')
+		.filter(function(d,i) {
+      		return (this !== circleUnderMouse);
+      	})
+		.style('opacity', 0.2);
+
+	d3.select(this)
+		.transition()
+        .duration(300)
+        .attr("r", "8");
+
+
+    
+    gemeentes
+    	.filter(function(a, i) {
+    		return (d.CODE !== this.id);
+        })
+        .style('opacity', 0.2);
+
+    return tooltip
+		.style("visibility", "visible")
+		.html('<p>' + d.CITY + '</p>');
+        
+}
+
+function mouseMovePlot(d) {  
+
+    return tooltip
+		.style("top", (event.pageY-10)+"px")
+		.style("left",(event.pageX+10)+"px")
+}
+
+function mouseOutPlot(d) {
+
+    d3.selectAll('.circle')
+        .attr("r", "3")
+        .style("opacity", 1); 
+
+    gemeentes
+    	.style("opacity", 1); 
+
+    return tooltip
+		.style("visibility", "hidden");
+
+        
 }
