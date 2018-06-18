@@ -35,5 +35,9 @@
 * Scatterplot staat! Nog geen interactie met andere visualisaties.
 * Lang bezig geweest om tooltip zichbaar te krijgen. 
 
+### Dag 10
+* Scatterplot is uitgebreid. Is nu mooi interactief met de kaart. 
+* Begin gemaakt aan de tooltip van de scatterplot.
+* Presentatie gehad. Positieve feedback. Schaal van kaart aanpassen naar een kleur.
 
 

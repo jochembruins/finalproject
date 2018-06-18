@@ -72,6 +72,7 @@ function makeLine(data){
     	.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
+			.attr("class", "transform") 
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	var x = d3.scaleTime()
@@ -85,12 +86,12 @@ function makeLine(data){
 	var tickLabels = ['2011','Q2','Q3','Q4','2012','Q2','Q3','Q4','2013','Q2','Q3','Q4','2014','Q2','Q3','Q4','2015','Q2','Q3','Q4','2016','Q2','Q3','Q4','2017','Q2','Q3','Q4','2018','Q2']
 	xAxis = d3.axisBottom(x)
 		.ticks(30)
-		.tickSize(-height, 0, 0)
+		// .tickSize(-height, 0, 0)
 		.tickFormat(function(d,i){ return tickLabels[i] });	
 
 	yAxis = d3.axisLeft(y)
 		.ticks(12)
-		.tickSize(width / 100)
+
 	
 	svg.append("g")
 		.attr("class", "axis") 
@@ -99,7 +100,8 @@ function makeLine(data){
 
 	svg.append("g")
 		.attr("class", "axis") 
-		.call(yAxis)
+		.call(yAxis);
+
 
 	// Define the three lines
 	line = d3.line()
@@ -110,11 +112,65 @@ function makeLine(data){
 	svg.append("path")
 		.attr("d", line(data))
 		.attr("class", "line");
+
+	annotations = [{
+          type: d3.annotationCalloutCircle,
+          note: {
+            title: "Schietpartij in Alphen aan de Rijn",
+            wrap: 110
+          },
+          //settings for the subject, in this case the circle radius
+          subject: {
+            radius: 10
+          },
+          x: 43,
+          y: 137,
+          dy: -30,
+          dx: 20
+        },
+        {
+          type: d3.annotationCalloutCircle,
+          note: {
+            title: "Arrestatie moordenaar Els Borst",
+            wrap: 130
+          },
+          //settings for the subject, in this case the circle radius
+          subject: {
+            radius: 10
+          },
+          x: 480,
+          y: 35,
+          dy: 40,
+          dx: -60
+        },
+        {
+          type: d3.annotationCalloutCircle,
+          note: {
+            title: "Steekpartij Den Haag door verwarde Syrier",
+            wrap: 140
+          },
+          //settings for the subject, in this case the circle radius
+          subject: {
+            radius: 10
+          },
+          x: 857,
+          y: 19,
+          dy: 15,
+          dx: -60
+        }].map(function(d){ d.color = "#E8336D"; return d})
+
+   	const makeAnnotations = d3.annotation()
+        .type(d3.annotationLabel)
+        .annotations(annotations)
+
+    marks = svg.append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations)
 }
 
 function updateCombi() {
-	svg = d3.select("g")
-	console.log(dataE33)
+	svg = d3.select(".transform")
+		.append("g");
 
 	var x = d3.scaleBand()
 		.range([0, width * (29/30)])
@@ -125,6 +181,14 @@ function updateCombi() {
     	.rangeRound([height, height/2])
     	.domain([0, d3.max(dataE33, function(d) { return d.AMOUNT; })]);
 
+	var tip = d3.tip()
+  		.attr('class', 'd3-tip')
+  		.offset([-10, 0])
+  		.html(function(d) {
+    	return "<strong>Frequency:</strong> <span style='color:red'>" + d.AMOUNT + "</span>";
+  	});
+  	svg.call(tip);
+
 	var rect = svg.selectAll("rect")
       	.data(dataE33)
 		.enter()
@@ -132,14 +196,25 @@ function updateCombi() {
       	.attr("class", "bar")
 		.attr("y", function(d) { return height; })
 		.attr("x", function(d){ return x(d.YEAR); })
+		.on("mouseover", tip.show)
+      	.on("mouseout", tip.hide)
 		.transition().delay(function (d,i){ return i * 100;})
  		.duration(100)
       	.attr("width", function(d){ return x.bandwidth(); })
       	.attr("y", function(d){ return y(d.AMOUNT); })
       	.attr("height", function(d){ return height - y(d.AMOUNT); });
+;
 
-	svg.select(".line")
-		.moveToFront()
+	d3.select(".line")
+		.moveToFront();
+
+	d3.select(".annotation-group")
+		.moveToFront();
+
+	d3.selectAll(".axis")
+		.moveToFront();
+
+	
     
     showMap()
     prepPlot()
