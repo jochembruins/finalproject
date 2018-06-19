@@ -163,60 +163,111 @@ function makeLine(data){
         .type(d3.annotationLabel)
         .annotations(annotations)
 
-    marks = svg.append("g")
+    var marks = svg.append("g")
         .attr("class", "annotation-group")
         .call(makeAnnotations)
+
+    	// adds title to the graph
+	var title = svg.append("text")
+		.attr("class", "title")
+		.attr("x", width / 2)
+		.attr("y", - margin.top / 3)
+		.text("Media-aandacht voor verwarde personen")
+		.style("text-anchor", "middle")
+		.style("font-size", "20px");
+
+	var labelX = svg.append("text")
+        .attr("x", width - margin.right / 2.5)
+        .attr("y" , height + margin.bottom )
+        .text("kwartaal")
+        .style("text-anchor", "middle")
+        .style("font-size", "12px")
+        .attr("class", "label");
+
+
+	var yLabel = svg.append("text")
+		.attr("x", - height / 3.2)
+		.attr("y", margin.left / 12 )
+		.text("Artikelen over verwarde personen")
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.style("font-size", "9px")
+		.attr("transform", "rotate(-90)")
+		.attr("class", "label");
+
+
 }
 
 function updateCombi() {
-	svg = d3.select(".transform")
-		.append("g");
 
-	var x = d3.scaleBand()
-		.range([0, width * (29/30)])
-		.domain(dataE33.map(function(d) { return d.YEAR; }))
-		.paddingInner(0.05);
-    	
-    var y = d3.scaleLinear()
-    	.rangeRound([height, height/2])
-    	.domain([0, d3.max(dataE33, function(d) { return d.AMOUNT; })]);
+	rects = d3.selectAll(".bar")
+	console.log(rects)
+	if (rects.empty()) {
+		svg = d3.select(".transform")
+			.append("g");
 
-	var tip = d3.tip()
-  		.attr('class', 'd3-tip')
-  		.offset([-10, 0])
-  		.html(function(d) {
-    	return "<strong>Frequency:</strong> <span style='color:red'>" + d.AMOUNT + "</span>";
-  	});
-  	svg.call(tip);
+		var x = d3.scaleBand()
+			.range([0, width * (29/30)])
+			.domain(dataE33.map(function(d) { return d.YEAR; }))
+			.paddingInner(0.05);
+	    	
+	    var y = d3.scaleLinear()
+	    	.rangeRound([height, height/2])
+	    	.domain([0, d3.max(dataE33, function(d) { return d.AMOUNT; })]);
 
-	var rect = svg.selectAll("rect")
-      	.data(dataE33)
-		.enter()
-		.append("rect")
-      	.attr("class", "bar")
-		.attr("y", function(d) { return height; })
-		.attr("x", function(d){ return x(d.YEAR); })
-		.on("mouseover", tip.show)
-      	.on("mouseout", tip.hide)
-		.transition().delay(function (d,i){ return i * 100;})
- 		.duration(100)
-      	.attr("width", function(d){ return x.bandwidth(); })
-      	.attr("y", function(d){ return y(d.AMOUNT); })
-      	.attr("height", function(d){ return height - y(d.AMOUNT); });
-;
+	    var yAxis = d3.axisRight(y)
+			.ticks(4);
 
-	d3.select(".line")
-		.moveToFront();
+		var tip = d3.tip()
+	  		.attr('class', 'd3-tip')
+	  		.offset([-7, 0])
+	  		.html(function(d) {
+	    	return "<strong>E33-meldingen " + d.YEAR.getFullYear() + ": </strong> <span style='color:red'>" + d.AMOUNT + "</span>";
+	  	});
+	  	svg.call(tip);
 
-	d3.select(".annotation-group")
-		.moveToFront();
+		var rect = svg.selectAll("rect")
+	      	.data(dataE33)
+			.enter()
+			.append("rect")
+	      	.attr("class", "bar")
+			.attr("y", function(d) { return height; })
+			.attr("x", function(d){ return x(d.YEAR); })
+			.on("mouseover", tip.show)
+	      	.on("mouseout", tip.hide)
+			.transition().delay(function (d,i){ return i * 100;})
+	 		.duration(100)
+	      	.attr("width", function(d){ return x.bandwidth(); })
+	      	.attr("y", function(d){ return y(d.AMOUNT); })
+	      	.attr("height", function(d){ return height - y(d.AMOUNT); });
 
-	d3.selectAll(".axis")
-		.moveToFront();
+	    svg.append("g")
+			.attr("transform", "translate(" + width + " ,0)")
+			.attr("class", "axis") 
+			.call(yAxis);
 
-	
-    
-    showMap()
-    prepPlot()
+		var yLabel = svg.append("text")
+			.attr("x", height/1.55)
+			.attr("y", - width * 0.995)
+			.text("E33-meldingen")
+			.attr("dy", "1em")
+			.style("text-anchor", "middle")
+			.style("font-size", "10px")
+			.attr("transform", "rotate(90)")
+			.attr("class", "label");
 
+		d3.select(".line")
+			.moveToFront();
+
+		d3.select(".annotation-group")
+			.moveToFront();
+
+		d3.selectAll(".axis")
+			.moveToFront();
+
+		
+	    
+	    showMap()
+	    prepPlot()
+	};
 }

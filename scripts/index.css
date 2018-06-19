@@ -1,3 +1,8 @@
+html *
+{
+   font-family: 'Montserrat' !important;
+}
+
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
 	margin-bottom: 0;
@@ -39,40 +44,40 @@ path {
 
 .axis line,
 .axis path {
-  stroke: rgb(210, 210, 210);
-  stroke-width: 1.2;
+    stroke: rgb(193, 193, 193);
+    stroke-width: 1.2;
 }
 
 .bar {
-  fill: rgb(242, 208, 127);
+    fill: rgb(242, 208, 127);
 }
 
 .bar:hover {
-  fill: rgb(233, 157, 75);
+    fill: rgb(233, 157, 75);
 }
 
 .gemeente {
 	stroke-width:2;
 }
 
+#svgContainer {
+    text-align: center;
+    font-size: 20px;
+}
+
 .slidecontainer {
-    width: 100px;
+    padding-top: 200px;
+    padding-left: 35px;
+    width: 200px;
 }
 
 .slider {
     -webkit-appearance: none;
-    width: 50%;
     height: 15px;
     border-radius: 5px;
     background: #d3d3d3;
-    outline: none;
     opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-.slider:hover {
-    opacity: 1;
+    transform: rotate(-90deg);
 }
 
 .slider::-webkit-slider-thumb {
@@ -93,6 +98,12 @@ path {
     cursor: pointer;
 }
 
+#slideroutput {
+    position: absolute;
+    margin-left:20px;
+    margin-top:-20px;
+}
+
 .top-buffer { margin-top:20px; }
 
 .tooltips {
@@ -102,3 +113,34 @@ path {
     height: auto;
     pointer-events: none;
 }
+
+.d3-tip {
+    line-height: 1;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/* Style northward tooltips specifically */
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+

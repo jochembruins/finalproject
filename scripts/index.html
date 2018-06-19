@@ -17,6 +17,7 @@
 <script type="text/javascript" src="js/map.js"></script>
 <script type="text/javascript" src="js/bar.js"></script>
 <script type="text/javascript" src="js/plot.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -48,23 +49,25 @@
     </div>
     <div id="mapbar" style="visibility:hidden;">
     <div class="row top-buffer">
-      <div class="col-sm-2 col-sm-offset-1">
-        <div class="""slidecontainer">
-          <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
-          <span id="slideroutput">Huidige jaar: <span id="slidertext">2017</span></span>
-        </div>
-      </div>
     </div>
       <div class="row">
-        <div class="col-sm-5 col-sm-offset-1">
+        <div class="col-sm-1 col-sm-offset-1">
+        <div class="slidecontainer">
+          <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
+          <span id="slideroutput">Selecteer een jaar: <span id="slidertext">2017</span></span>
+        </div>
+      </div>
+        <div class="col-sm-4">
           <div id="svgContainer">
+            E-33 meldingen per gemeente
             <object id="svgmap" data="data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
+          <div class="row">
           <div id="containerbar"></div>
+          <div id="svgscatter"></div>
         </div>
-      </div>
     </div>
       <div class="row">
         <div class="col-sm-6 col-sm-offset-2 scatter">

@@ -41,3 +41,8 @@
 * Presentatie gehad. Positieve feedback. Schaal van kaart aanpassen naar een kleur.
 
 
+### Dag 11
+* Annotaties toegevoegd aan gecombineerde grafiek
+* Tooltip toegevoegd aan gecombineerde grafiek
+* HTML-indeling omgegooid
+* Barchart horizontaal ipv verticaal. 

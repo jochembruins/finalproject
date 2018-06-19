@@ -22,7 +22,7 @@ function makeMap() {
         colorScale = d3.scaleLinear()
             .domain([1, 5])
             .interpolate(d3.interpolateHcl)
-            .range([d3.rgb('#ffffbf'), d3.rgb('#4575b4')])
+            .range([d3.rgb('#f7fbff'), d3.rgb('#4292c6')])
             .clamp(true);
 
         //loop through csv to assign each csv values to json region
@@ -53,11 +53,11 @@ function makeMap() {
         
         };
         
-        gemeentes
-            .style("stroke-width", "0.5")
-            .on("click", getId)
-            .on("mouseover", mouseOver)
-            .on("mouseout", mouseOut);
+    gemeentes
+        .style("stroke-width", "0.5")
+        .on("click", getId)
+        .on("mouseover", mouseOver)
+        .on("mouseout", mouseOut);
     };   
 }
 
@@ -88,6 +88,7 @@ function mouseOver(d, i) {
 
 function mouseOut(d, i) {
     // Use D3 to select element, change color back to normal
+
     d3.select(this)
         .style("stroke-width", "0.5");
 
@@ -101,6 +102,16 @@ function mouseOut(d, i) {
 
 function getId(d, i) {  
     // Use D3 to select element, change color and size
+    
+    var year = document.getElementById("myRange").value
+    gemeentes.each(function (d, i) {
+            selection = d3.select(this)   
+            selection.style("fill", colorScale(Math.round(parseFloat(selection.attr("R"+year)))));
+    });
+
+    d3.select(this)
+        .style("fill", "rgb(242, 208, 127)");
+
     gemeente = d3.select(this).attr('id')
 
     dataBar(gemeente)            

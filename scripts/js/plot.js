@@ -11,9 +11,9 @@ function prepPlot() {
 function makePlot(data) {
 	
 	// set siza and margin
-	var margin = {top: 50, right: 50, bottom: 70, left: 70};
-    var width = 800 - margin.left - margin.right,
-    	height = 500 - margin.top - margin.bottom;
+	var margin = {top: 40, right: 20, bottom: 40, left: 70};
+    var width = 718 - margin.left - margin.right,
+    	height = 450 - margin.top - margin.bottom;
 
 
 	// determine X scale
@@ -72,12 +72,16 @@ function makePlot(data) {
 	// draw X-axis
 	svg.append("g")
 		.attr('transform', 'translate(0,' + height + ')')
-		.call(xAxisPlot)
+		.attr("class", "axis")
+		.call(xAxisPlot);
+		
 		
 
 	// draw Y-axis
 	svg.append("g")
+		.attr("class", "axis")
 		.call(yAxisPlot);
+		
 
 }
 
@@ -97,8 +101,6 @@ function mouseOverPlot(d) {
         .duration(300)
         .attr("r", "8");
 
-
-    
     gemeentes
     	.filter(function(a, i) {
     		return (d.CODE !== this.id);
