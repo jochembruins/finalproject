@@ -13,11 +13,9 @@ function makeMap() {
         setTimeout(makeMap, 100);
     } else {
         var svgMap = d3.select(document.getElementById("svgmap").contentDocument);
-        console.log(svgMap)
         var svgItem = svgMap.select("#gemeentes");
-        console.log(svgItem)
         gemeentes = svgItem.selectAll("path");
-        console.log(gemeentes)
+
 
         colorScale = d3.scaleLinear()
             .domain([1, 5])
@@ -61,7 +59,7 @@ function makeMap() {
     };   
 }
 
-function mouseOver(d, i) {  
+function mouseOver(d) {  
 
     // Use D3 to select element, change color and size
     d3.select(this)
@@ -80,13 +78,37 @@ function mouseOver(d, i) {
         .filter(function(a) {
             return (id === a.CODE);
         })
-        .transition()
-        .duration(300)
-        .attr("r", "8");
+        .attr("r", "12")
+        .moveToFront()
+
+    var circle = document.getElementById(id)
+
+    if (circle != null) {
+        var loc = circle.getBoundingClientRect()
+
+        var dataTip = []    
+
+        for (var i=0; i < dataPlot.length; i++) {
+            if (dataPlot[i].CODE == id){
+                dataTip = dataPlot[i];
+                break
+            }
+        }
+        console.log(dataPlot)
+        console.log(loc)
+
+        return tooltip
+            .style("visibility", "visible")
+            .html("<p><b>" + dataTip.CITY + "</p><p style='font-size:14px;'>" + dataTip.E33.toFixed(2) + "</b> E33-meldingen per 1000 inwoners<br><b>&euro; " + dataTip.GGZ.toFixed(2) + "</b> kosten GGZ per verzekerde</p>")
+            .style("left", loc.x - 280 +"px")
+            .style("top", loc.y + window.scrollY +"px");
+    }
+
+
         
 }
 
-function mouseOut(d, i) {
+function mouseOut(d) {
     // Use D3 to select element, change color back to normal
 
     d3.select(this)
@@ -94,10 +116,10 @@ function mouseOut(d, i) {
 
     d3.selectAll('circle')
         .style('opacity', 1)
-        .transition()
-        .duration(300)
         .attr("r", "3");
-        
+    
+    return tooltip
+            .style("visibility", "hidden")
 }
 
 function getId(d, i) {  
@@ -110,7 +132,7 @@ function getId(d, i) {
     });
 
     d3.select(this)
-        .style("fill", "rgb(242, 208, 127)");
+        .style("fill", "rgb(2,129,138)");
 
     gemeente = d3.select(this).attr('id')
 

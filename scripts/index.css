@@ -49,11 +49,11 @@ path {
 }
 
 .bar {
-    fill: rgb(242, 208, 127);
+    fill: rgb(2,129,138);
 }
 
 .bar:hover {
-    fill: rgb(233, 157, 75);
+    fill: rgb(54,144,192);
 }
 
 .gemeente {
@@ -67,7 +67,6 @@ path {
 
 .slidecontainer {
     padding-top: 200px;
-    padding-left: 35px;
     width: 200px;
 }
 
@@ -86,7 +85,7 @@ path {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: rgb(0, 152, 198);
+    background: rgb(2,129,138);
     cursor: pointer;
 }
 
@@ -94,7 +93,7 @@ path {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: rgb(0, 152, 198);
+    background: rgb(2,129,138);
     cursor: pointer;
 }
 
@@ -142,5 +141,30 @@ path {
     top: 100%;
     left: 0;
 }
+
+/*#svgscatter,
+#containerbar {
+    margin-left: 50px;
+}*/
+
+#svgmap {
+    margin-top: 50px;
+}
+
+.annotation-note-title{
+    
+    color:black;
+}
+
+.annotation path {
+    stroke: rgb(193, 193, 193);
+}
+
+.annotation text {
+    font-size: 70%;
+    fill: rgb(0, 0, 0)!important;
+}
+
+
 
 

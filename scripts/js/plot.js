@@ -3,17 +3,17 @@ function prepPlot() {
 		d.E33 = parseFloat(d.E33.replace(",", "."));
 		d.GGZ = parseFloat(d.GGZ.replace(",", "."));
 	});
-	console.log(dataPlot)
 	makePlot(dataPlot)
 
 }
 
 function makePlot(data) {
-	
+	console.log(data)
+
 	// set siza and margin
-	var margin = {top: 40, right: 20, bottom: 40, left: 70};
-    var width = 718 - margin.left - margin.right,
-    	height = 450 - margin.top - margin.bottom;
+	var margin = {top: 40, right: 20, bottom: 40, left: 40};
+    var width = 650 - margin.left - margin.right,
+    	height = 400 - margin.top - margin.bottom;
 
 
 	// determine X scale
@@ -48,8 +48,10 @@ function makePlot(data) {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     tooltip = d3.select("body")
-     	.append("div")
-        .attr("class", "tooltips");
+    	.append("div")
+        .attr("class", "tooltips")
+        .style("text-align", "right")
+
 	
 	// draw circles for scatterplot
 	var circles = svg.selectAll("circle")
@@ -63,7 +65,14 @@ function makePlot(data) {
    		.attr("cy", function(d) {
         	return yPlot(d.GGZ);
    		})
+   		.attr("id", function(d) {
+        	return d.CODE;
+   		})
    		.attr("r", "3")
+   		.style("stroke", "rgb(193, 193, 193)")
+   		.style("fill", function(d) {
+        	return colorScale(Math.round(d.E33));
+   		})
    		// show tooltip when mouse is on circle
 		.on("mouseover", mouseOverPlot)
 		.on("mousemove", mouseMovePlot)
@@ -81,7 +90,33 @@ function makePlot(data) {
 	svg.append("g")
 		.attr("class", "axis")
 		.call(yAxisPlot);
-		
+	
+	 var labelX = svg.append("text")
+        .attr("x", width - margin.right * 4.5)
+        .attr("y" , height + margin.bottom / 1.5)
+        .text("E33 meldingen per 1000 inwoners")
+        .style("text-anchor", "middle")
+        .style("font-size", "10px")
+        .attr("class", "label");
+
+    var yLabel = svg.append("text")
+		.attr("x", - height / 4.5)
+		.attr("y", margin.left / 8)
+		.text("Kosten GGZ per verzekerde")
+		.attr("dy", "1em")
+		.style("text-anchor", "middle")
+		.style("font-size", "10px")
+		.attr("transform", "rotate(-90)")
+		.attr("class", "label");
+
+            // adds title to the graph
+    var title = svg.append("text")
+        .attr("class", "titlePlot")
+        .attr("x", width / 2)
+        .attr("y", - margin.top / 3)
+        .text("Mogelijk verband met de GGZ")
+        .style("text-anchor", "middle")
+        .style("font-size", "20px");
 
 }
 
@@ -94,22 +129,25 @@ function mouseOverPlot(d) {
 		.filter(function(d,i) {
       		return (this !== circleUnderMouse);
       	})
-		.style('opacity', 0.2);
+		.style('opacity', 0.5);
+
 
 	d3.select(this)
 		.transition()
-        .duration(300)
-        .attr("r", "8");
+        .duration(100)
+        .attr("r", "12")
+
 
     gemeentes
     	.filter(function(a, i) {
     		return (d.CODE !== this.id);
         })
-        .style('opacity', 0.2);
+        .style('opacity', 0.3);
 
     return tooltip
 		.style("visibility", "visible")
-		.html('<p>' + d.CITY + '</p>');
+		.html("<p><b>" + d.CITY + "</p><p style='font-size:14px;'>" + d.E33.toFixed(2) + "</b> E33-meldingen per 1000 inwoners<br><b>&euro; " + d.GGZ.toFixed(2) + "</b> kosten GGZ per verzekerde</p>")
+
         
 }
 
@@ -117,8 +155,9 @@ function mouseMovePlot(d) {
 
     return tooltip
 		.style("top", (event.pageY-10)+"px")
-		.style("left",(event.pageX+10)+"px")
+		.style("left",(event.pageX-300)+"px")
 }
+
 
 function mouseOutPlot(d) {
 

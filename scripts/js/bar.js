@@ -30,8 +30,8 @@ function makeBar(data) {
     console.log(data)
     bar = true
 
-    margin = { top: 40, right: 20, bottom: 40, left: 70 },
-    width = 718 - margin.left - margin.right,
+    margin = { top: 40, right: 20, bottom: 40, left: 40 },
+    width = 650 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
     
@@ -107,10 +107,8 @@ function makeBar(data) {
         .attr("y", - margin.top / 3)
         .text("E33-meldingen in " + data.city)
         .style("text-anchor", "middle")
-        .style("font-size", "20px")
-        .style("font-family", "'Montserrat'");
+        .style("font-size", "20px");
 }
-
 
 function updateBar(data) {  
     console.log(data)

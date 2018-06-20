@@ -184,11 +184,10 @@ function makeLine(data){
         .style("font-size", "12px")
         .attr("class", "label");
 
-
 	var yLabel = svg.append("text")
 		.attr("x", - height / 3.2)
 		.attr("y", margin.left / 12 )
-		.text("Artikelen over verwarde personen")
+		.text("Artikelen verwarde personen")
 		.attr("dy", "1em")
 		.style("text-anchor", "middle")
 		.style("font-size", "9px")
@@ -247,7 +246,7 @@ function updateCombi() {
 			.call(yAxis);
 
 		var yLabel = svg.append("text")
-			.attr("x", height/1.55)
+			.attr("x", height / 1.45)
 			.attr("y", - width * 0.995)
 			.text("E33-meldingen")
 			.attr("dy", "1em")

@@ -46,3 +46,15 @@
 * Tooltip toegevoegd aan gecombineerde grafiek
 * HTML-indeling omgegooid
 * Barchart horizontaal ipv verticaal. 
+
+### Dag 12
+* Barchart werkt nu.
+* Begin Tooltip
+* Scatterplot mooier met kleuren
+
+### Dag 13
+* Titels bij grafieken
+* Aslapels bij scatterplot
+* Betere interactie met kaart
+* Verdere styling
+* Had mn browser op 80% zoom staan. Hierdoor veranderde de schaal van alles
