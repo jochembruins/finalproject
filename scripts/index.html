@@ -37,29 +37,27 @@
   </nav>
     
   <div class="container-fluid text-center">    
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+    <div class="row" id="combi">
+        <div class="col-sm-7 col-sm-offset-1">
           <div id="containercombi"></div>
         </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <button type="button" class="btn btn-primary btn-block" onclick="updateCombi()">Laat het aantal E33-meldingen per jaar zien</button>
-      </div>
-    </div>
-    <div id="mapbar" style="visibility:hidden;">
-    <div class="row top-buffer">
-    </div>
-      <div class="row">
-        <div class="col-sm-1">
-        <div class="slidecontainer">
-          <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
-          <span id="slideroutput">Selecteer een jaar: <span id="slidertext">2017</span></span>
+        <div class="col-sm-3">
+        <h4>Uitleg</h4>
+        <div id="explain"><p>De verwarde persoon komt steeds vaker voor in de Nederlandse media. De lijngrafiek hiernaast toont de ontwikkeling van het aantal artikelen over verwarde personen in de Nederlandse dagbladen.</p><p>Maar in hoeverre is de toename aan media-aandacht een weerspiegeling van de werkelijkheid? Klik op de knop om meer te weten te komen over E33-meldingen in Nederland. Dit zijn meldingen over incidenten met verwarde personen die binnenkomen bij de politie.</p>
         </div>
-      </div>
+        <button type="button" class="btn .btn-default .btn-block" onclick="updateCombi()">Toon E33-meldingen</button>
+    </div>
+  </div>
+    <div class="row"id="mapbar" style="visibility:hidden;">
+        <div class="col-sm-1">
+          <div class="slidecontainer">
+            <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
+            <span id="slideroutput">Selecteer een jaar: <span id="slidertext">2017</span></span>
+          </div>
+        </div>
         <div class="col-sm-5">
           <div id="svgContainer">
-            E-33 meldingen per gemeente
+            E33-meldingen per gemeente
             <object id="svgmap" data="data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
           </div>
         </div>
@@ -68,7 +66,7 @@
           <div id="containerbar"></div>
           <div id="svgscatter"></div>
         </div>
-    </div>
+      </div>
       <div class="row">
         <div class="col-sm-6 col-sm-offset-2 scatter">
           <div id="svgscatter"></div>

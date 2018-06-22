@@ -58,3 +58,7 @@
 * Betere interactie met kaart
 * Verdere styling
 * Had mn browser op 80% zoom staan. Hierdoor veranderde de schaal van alles
+
+### Dag 14
+* Styling gedaan
+* Alles staat nu waar het moet staan.

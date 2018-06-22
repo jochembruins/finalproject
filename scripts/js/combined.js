@@ -64,7 +64,7 @@ function getFrequency(data) {
 
 function makeLine(data){
     margin = {top: 30, right: 50, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
+    width = 840 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
     var svg = d3.select("#containercombi")
@@ -123,7 +123,7 @@ function makeLine(data){
           subject: {
             radius: 10
           },
-          x: 43,
+          x: 41,
           y: 137,
           dy: -30,
           dx: 20
@@ -138,7 +138,7 @@ function makeLine(data){
           subject: {
             radius: 10
           },
-          x: 480,
+          x: 412,
           y: 35,
           dy: 40,
           dx: -60
@@ -153,7 +153,7 @@ function makeLine(data){
           subject: {
             radius: 10
           },
-          x: 857,
+          x: 735,
           y: 19,
           dy: 15,
           dx: -60
@@ -221,7 +221,7 @@ function updateCombi() {
 	  		.attr('class', 'd3-tip')
 	  		.offset([-7, 0])
 	  		.html(function(d) {
-	    	return "<strong>E33-meldingen " + d.YEAR.getFullYear() + ": </strong> <span style='color:red'>" + d.AMOUNT + "</span>";
+	    	return "<strong>E33-meldingen " + d.YEAR.getFullYear() + ": </strong> <span style='color:rgb(66, 146, 198)'>" + d.AMOUNT + "</span>";
 	  	});
 	  	svg.call(tip);
 

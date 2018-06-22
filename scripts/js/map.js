@@ -57,6 +57,8 @@ function makeMap() {
         .on("mouseover", mouseOver)
         .on("mouseout", mouseOut);
     };   
+    console.log('hallo')
+    makeLegend()
 }
 
 function mouseOver(d) {  
@@ -155,5 +157,59 @@ function updateMap(year) {
         });
     
 };
+
+function makeLegend() {
+    console.log('hier')
+    var margin = 10,
+        width = 500 - margin,
+        height = 30 - margin;
+
+    var colorRange = ['#f7fbff', '#4292c6']
+        
+    var color = d3.scaleLinear().range(colorRange).domain([1, 2]);
+
+    var svg = d3.select('#svgContainer')
+            .append('svg')
+            .attr("width", width + (margin * 2))
+            .attr("height", height + (margin * 2))
+            .append("g")
+            .attr("transform", "translate(" + (margin) + "," + (margin) + ")");
+
+    var linearGradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "linear-gradient");
+           
+
+    linearGradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", color(1));
+
+    linearGradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", color(2));
+
+
+    svg.append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", width)
+            .attr("height", height)
+            .style("stroke", "rgb(193, 193, 193)")
+            .style("stroke-width", 1)
+            .style("fill", "url(#linear-gradient)");
+
+    var labels = ['< 1', '2', '3', '4', '5 >'];
+    
+
+    for (var i = 0; i < labels.length; i++) {
+        svg.append("text")
+            .attr("x", 0 + (width / 4) * i)
+            .attr("y" , height + margin)
+            .text(labels[i])
+            .style("text-anchor", "middle")
+            .style("font-size", "10px")
+            .attr("class", "label"); 
+    }
+} 
 
 

@@ -58,7 +58,7 @@ function makeBar(data) {
         .attr('class', 'd3-tip')
         .offset([-7, 0])
         .html(function(d) {
-        return "<strong>E33-meldingen " + d.year.getFullYear() + ": </strong> <span style='color:red'>" + d.E33 + "</span>";
+        return "<strong>E33-meldingen " + d.year.getFullYear() + ": </strong> <span style='color:rgb(66, 146, 198)'>" + d.E33 + "</span>";
         });
     
     svg.call(tip);
@@ -100,11 +100,11 @@ function makeBar(data) {
         .style("font-size", "10px")
         .attr("class", "label");
 
-            // adds title to the graph
+    // adds title to the graph
     title = g.append("text")
         .attr("class", "title")
         .attr("x", width / 2)
-        .attr("y", - margin.top / 3)
+        .attr("y", - margin.top / 2)
         .text("E33-meldingen in " + data.city)
         .style("text-anchor", "middle")
         .style("font-size", "20px");
