@@ -62,3 +62,8 @@
 ### Dag 14
 * Styling gedaan
 * Alles staat nu waar het moet staan.
+
+### Dag 15
+* Laatste  dag dat ik er serieus aan kan.
+* Positieve feedback tijdens de meeting.
+* Infoscherm gemaakt voor scatterplot.

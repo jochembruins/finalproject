@@ -134,7 +134,7 @@ function getId(d, i) {
     });
 
     d3.select(this)
-        .style("fill", "rgb(2,129,138)");
+        .style("fill", "rgb(153,112,171)");
 
     gemeente = d3.select(this).attr('id')
 
@@ -200,6 +200,13 @@ function makeLegend() {
 
     var labels = ['< 1', '2', '3', '4', '5 >'];
     
+    svg.append("text")
+        .attr("x", width / 5.2)
+        .attr("y" , - margin / 3.5)
+        .text('E33-meldingen per 1000 inwoners')
+        .style("text-anchor", "middle")
+        .style("font-size", "10px")
+        .attr("class", "label");
 
     for (var i = 0; i < labels.length; i++) {
         svg.append("text")

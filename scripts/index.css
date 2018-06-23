@@ -85,7 +85,7 @@ path {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: rgb(153,112,171);
+    background: rgb(66, 146, 198);
     cursor: pointer;
 }
 
@@ -93,7 +93,7 @@ path {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: rgb(153,112,171);
+    background: rgb(66, 146, 198);
     cursor: pointer;
 }
 
@@ -120,6 +120,20 @@ path {
     width: auto;
     height: auto;
     pointer-events: none;
+    text-align: right;
+}
+
+.info {
+    position: absolute;
+    font-size: 12px;
+    width: 500px;
+    height: auto;
+    padding: 10px;
+    pointer-events: none;
+    text-align: left;
+    border-radius: 5px;
+    background: #d3d3d3;
+    opacity: 0.85;
 }
 
 .d3-tip {
@@ -176,6 +190,11 @@ path {
     text-align: left;
     font-size: 12px;
 
+}
+
+.no-margin {
+    margin-left: 15px;
+    padding-left: 0px!important;
 }
 
 

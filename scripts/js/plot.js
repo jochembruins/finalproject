@@ -49,8 +49,15 @@ function makePlot(data) {
 
     tooltip = d3.select("body")
     	.append("div")
-        .attr("class", "tooltips")
-        .style("text-align", "right")
+        .attr("class", "tooltips");
+
+    info = d3.select("body")
+		.append("div")
+		.attr("class", "info")
+		.style("visibility", "hidden")
+		.attr("class", "info")
+		.html('<h4>Uitleg puntenwolk</h4><p>Bezuinigingen op de GGZ (geestelijke gezondheidszorg) worden vaak als mogelijke oorzaak genoemd voor de stijging in E33-meldingen. Dit is moeilijk te controleren.</p><p>Er is wel bekend hoe veel de verzekeraars in Nederland uitgeven aan (de verschillende onderdelen van) de GGZ. Onderstaande puntenwolk onderzoekt of er een verband is tussen de uitgaven aan de GGZ per gemeente en de hoeveelheid E33-meldingen in diezelfde plaats.</p><p>Disclaimer: Onderstaande visualisatie toont alleen de gegevens van 2016 en verandert niet mee met de kaart. Punten die zich ter hoogte van het uitende van de assen bevinden, hebben mogelijk nog extremere waarden. Ga eroverheen met de muis om de absolute waarden te zien.</p>');
+		
 
 	
 	// draw circles for scatterplot
@@ -114,10 +121,18 @@ function makePlot(data) {
         .attr("class", "titlePlot")
         .attr("x", width / 2)
         .attr("y", - margin.top / 3)
-        .text("Mogelijk verband met de GGZ")
+        .text("Mogelijk verband met uitgaven GGZ (2016)")
         .style("text-anchor", "middle")
         .style("font-size", "20px");
 
+	svg.append("image")
+  		.attr("xlink:href", "https://png.icons8.com/metro/1600/info.png")
+	  	.attr("x", width / 1.15)
+	  	.attr("y", - margin.top / 1.35)
+	  	.attr("width", "18px")
+	  	.attr("height", "18px")
+	  	.on("mouseover", mouseOverInfo)
+		.on("mouseout", mouseOutInfo);
 }
 
 
@@ -172,4 +187,17 @@ function mouseOutPlot(d) {
 		.style("visibility", "hidden");
 
         
+}
+
+function mouseOverInfo() {
+
+	return info
+		.style("top", (event.pageY+30)+"px")
+		.style("left",(event.pageX-480)+"px")
+		.style("visibility", "visible")
+}
+
+function mouseOutInfo() {
+	return info
+		.style("visibility", "hidden");
 }
