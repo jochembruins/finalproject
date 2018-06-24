@@ -3,12 +3,14 @@
 *
 * Jochem Bruins - 10578811
 *
-* Laadt de data en verschillende grafieken voor index.html
+* Loads the data and prepares this for the charts at index.html
 */
 
+/*
+* Does these functions while loading the page.
+*/
 window.onload = function() {
 	getData();
-
 };
 
  
@@ -22,7 +24,7 @@ function getData() {
 	var dataMap = 'data/dataMap.json';
 	var dataPlot= 'data/dataPlot.json';
 
-	// request all datafiles and wait till both loaded
+	// request all datafiles and wait till all retrieved
 	queue(4)
 		.defer(d3.json, dataE33)
 		.defer(d3.json, dataMedia)
@@ -31,14 +33,27 @@ function getData() {
 		.awaitAll(prepData);
 };
 
-d3.selection.prototype.moveToFront = function() {
-  return this.each(function(){
-  this.parentNode.appendChild(this);
-  });
+
+/*
+* Gets the data from requested files.
+*/
+function prepData (error, response) {
+	dataE33 = response[0].data;
+	dataMedia = response[1].data;
+	dataMap = response[2].data;
+	dataPlot = response[3].data;
+
+	prepCombi(dataMedia, dataE33);
 };
 
-window.addEventListener("load", function () {
-    window.loaded = true;
-});
 
+/*
+* Selects an svg element and moves it to the front.
+* Function from https://gist.github.com/johsh/9629458 
+*/
+d3.selection.prototype.moveToFront = function() {
+	return this.each(function(){
+		this.parentNode.appendChild(this);
+	});
+};
 

@@ -1,75 +1,77 @@
+/* index.css - Jochem Bruins (10578811) - Stylesheet for index.html */
+
+/* font for whole html */
 html *
 {
    font-family: 'Montserrat' !important;
 }
 
-/* Remove the navbar's default margin-bottom and rounded borders */ 
+/* no margins around navigation bar */
 .navbar {
 	margin-bottom: 0!important;
 	border-radius: 0;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-	height: 450px;
+/* style for explanation part */
+#explain {
+    margin-left: 30px;
+    text-align: left;
+    font-size: 12px;
 }
 
-/* Set gray background color and 100% height */
-.sidenav {
-	padding-top: 20px;
-	background-color: white;
-	height: 100%;
+/* add background color and padding to top part */
+#combi {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    background-color: rgb(247,251,255);
+}
+/* add background color and padding to downpart */
+#mapbar {
+    padding: 35px;
+    background-color: rgb(222,235,247); 
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-	.sidenav {
-		height: auto;
-		padding: 15px;
-	}
-
-	.row.content {
-		height:auto;
-	} 
-}
-
+/* same widht for all paths*/
 path {
 	stroke-width: 3!important;
 	fill: none;
 }
 
+/* color of line in linegraph */
 .line {
 	stroke: #91bfdb;
 }
 
+/* style of axis */
 .axis line,
 .axis path {
     stroke: rgb(193, 193, 193);
     stroke-width: 1.2;
 }
 
+/* color of bars */
 .bar {
     fill: rgb(153,112,171);
 }
 
+/* colors bar on hover */
 .bar:hover {
     fill: rgb(194,165,207);
 }
 
-.gemeente {
-	stroke-width:2;
-}
-
+/* container for title map */
 #svgContainer {
     text-align: center;
     font-size: 20px;
 }
 
+/* place slider at right position */
 .slidecontainer {
     padding-top: 200px;
     width: 200px;
 }
 
+/* slider style and transform to vertical */
 .slider {
     -webkit-appearance: none;
     height: 15px;
@@ -79,6 +81,7 @@ path {
     transform: rotate(-90deg);
 }
 
+/* slider style for thumb */
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -89,31 +92,14 @@ path {
     cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: rgb(66, 146, 198);
-    cursor: pointer;
-}
-
+/* position for text slider year */
 #slideroutput {
     position: absolute;
     margin-left:20px;
     margin-top:-20px;
 }
 
-#mapbar { 
-    padding: 35px;
-    background-color: rgb(222,235,247); 
-}
-
-#combi {
-    padding-top: 35px;
-    padding-bottom: 35px;
-    background-color: rgb(247,251,255);
-}
-
+/* tooltip style */
 .tooltips {
     position: absolute;
     font-size: 16px;
@@ -123,6 +109,7 @@ path {
     text-align: right;
 }
 
+/* style info block */
 .info {
     position: absolute;
     font-size: 12px;
@@ -136,6 +123,7 @@ path {
     opacity: 0.85;
 }
 
+/* style d3 tip. Inspiration from https://github.com/Caged/d3-tip */
 .d3-tip {
     line-height: 1;
     padding: 6px;
@@ -165,14 +153,8 @@ path {
     left: 0;
 }
 
-/*#svgscatter,
-#containerbar {
-    margin-left: 50px;
-}*/
-
-
+/* change annotation style */
 .annotation-note-title{
-    
     color:black;
 }
 
@@ -185,16 +167,15 @@ path {
     fill: rgb(0, 0, 0)!important;
 }
 
-#explain {
-    margin-left: 30px;
-    text-align: left;
-    font-size: 12px;
-
-}
-
+/* deletes margin for selected divs */
 .no-margin {
     margin-left: 15px;
     padding-left: 0px!important;
+}
+
+/* style for source page */
+#sources {
+    text-align: left;
 }
 
 
