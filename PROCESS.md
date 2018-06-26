@@ -3,13 +3,13 @@
 
 ### Dag 4
 * Data voor eerste grafieken juist geformatteerd.
-* Problemen met het omzettten van data naar kwartalen. Geen functie voor dus zelf moeten maken.
-* Ook het verkrijgen van de frequenties dat een bepaalde datum voorkomt in een array is lastig. 
+* Problemen met het omzettten van data naar kwartalen. Geen functie voor, dus zelf moeten maken.
+* Ook het verkrijgen van de frequenties van het aantal artikelen in een kwartaal gepubliceerd is lastig. 
 * Kleine achterstand door opgelopen.
 
 ### Dag 5
-* Vandaag idee gepitcht voor de klas. Positieve feedback
-* Gewerkt aan gecombineerde grafiek. Is bijna af. 
+* Vandaag idee gepitcht voor de klas. Positieve feedback!
+* Gewerkt aan gecombineerde grafiek. Deze is inmiddels bijna af. 
 * Begonnen aan datamap. Werkt nog niet. 
 
 ### Dag 6
@@ -23,7 +23,7 @@
 * Hoover over datamap werkt. 
 * Onclick-functie werkt ook.
 * Gekoppeld aan vandaag gebouwde staafdiagram.
-* Update uiteindelijk ook werkzaam gekregen.
+* Updatefunctie voor staafdiagram uiteindelijk ook werkzaam gekregen.
 * Vandaag was een productieve dag!
 
 ### Dag 8
@@ -38,32 +38,37 @@
 ### Dag 10
 * Scatterplot is uitgebreid. Is nu mooi interactief met de kaart. 
 * Begin gemaakt aan de tooltip van de scatterplot.
-* Presentatie gehad. Positieve feedback. Schaal van kaart aanpassen naar een kleur.
-
+* Presentatie gehad. Positieve feedback. Schaal van kaart aanpassen naar één enkele kleur. Wordt lichtblauw naar donkerblauw.
 
 ### Dag 11
-* Annotaties toegevoegd aan gecombineerde grafiek
-* Tooltip toegevoegd aan gecombineerde grafiek
-* HTML-indeling omgegooid
+* Annotaties toegevoegd aan gecombineerde grafiek.
+* Tooltip toegevoegd aan gecombineerde grafiek.
+* HTML-indeling omgegooid.
 * Barchart horizontaal ipv verticaal. 
 
 ### Dag 12
 * Barchart werkt nu.
-* Begin Tooltip
-* Scatterplot mooier met kleuren
+* Begin Tooltip voor scatterplot gemaakt. 
+* Scatterplot mooier met kleuren. Ook overzichtelijker. 
 
 ### Dag 13
-* Titels bij grafieken
-* Aslapels bij scatterplot
-* Betere interactie met kaart
-* Verdere styling
-* Had mn browser op 80% zoom staan. Hierdoor veranderde de schaal van alles
+* Titels bij grafieken toegevoegd.
+* Aslabels bij scatterplot toegevoegd.
+* Betere interactie met kaart. Tooltip werkt nu ook bij hover over de kaart. 
+* Verdere styling.
+* Had mn browser op 80% zoom staan. Hierdoor veranderde de schaal van alle grafieken. Dit heb ik opgelost.
 
 ### Dag 14
-* Styling gedaan
+* Verdere styling gedaan. 
 * Alles staat nu waar het moet staan.
 
 ### Dag 15
-* Laatste  dag dat ik er serieus aan kan.
+* Laatste dag dat ik er serieus aan kan werken.
 * Positieve feedback tijdens de meeting.
 * Infoscherm gemaakt voor scatterplot.
+* Laatste details aangepakt. 
+
+### Dag 16 / 17 (weekend)
+* Code opgeschoond.
+* Schaal van variabelen scherper gezet.
+* Overal comments toegevoegd.
