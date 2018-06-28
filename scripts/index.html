@@ -1,80 +1,86 @@
 <!--Jochem Bruins - 10578811 - webpage for  final project-->
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Eindproject MPROG - Jochem Bruins</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="index.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
-		<script src="https://d3js.org/queue.v1.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.2.5/d3-annotation.js"></script>
-		<script src="js/d3-tip.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/combined.js"></script>
-		<script type="text/javascript" src="js/map.js"></script>
-		<script type="text/javascript" src="js/bar.js"></script>
-		<script type="text/javascript" src="js/plot.js"></script>
-	</head>
-	<body>
-		<!-- Navigation bar from https://www.w3schools.com/Bootstrap/bootstrap_navbar.asp -->
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="https://www.linkedin.com/in/jochem-bruins-8954b9129">Jochem Bruins</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">Datavisualisatie</a></li>
-						<li><a href="sources.html">Bronnen</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div class="container-fluid text-center">		
-			<div class="row" id="combi">
-				<div class="col-sm-7 col-sm-offset-1">
-					<div id="containercombi"></div>
-				</div>
-				<div class="col-sm-3">
-					<h4>Uitleg</h4>
-					<div id="explain"><p>De verwarde persoon komt steeds vaker voor in de Nederlandse media. De lijngrafiek hiernaast toont de ontwikkeling van het aantal artikelen over verwarde personen in de Nederlandse dagbladen.</p><p>Maar in hoeverre is de toename aan media-aandacht een weerspiegeling van de werkelijkheid? Klik op de knop om meer te weten te komen over E33-meldingen in Nederland. Dit zijn meldingen over incidenten met verwarde personen die binnenkomen bij de politie.</p><p>Gebruik: Ga met de muis over de staven van de diagrammen om de absolute waardes te zien. Klik op een gemeente in de kaart om de staafdiagram naast de kaart te veranderen.</p>
-					</div>
-					<button type="button" class="btn .btn-default .btn-block" onclick="updateCombi()">Toon E33-meldingen</button>
-				</div>
-			</div>
-				<div class="row"id="mapbar" style="visibility:hidden;">
-					<div class="col-sm-1">
-						<div class="slidecontainer">
-							<!-- slider from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-							<input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
-								<span id="slideroutput">Selecteer een jaar: <span id="slidertext">2017</span></span>
-						</div>
-					</div>
-					<div class="col-sm-5 no-margin">
-						<div id="svgContainer">
-							E33-meldingen per gemeente
-							<object id="svgmap" data="data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="row">
-							<div id="containerbar"></div>
-							<div id="svgscatter"></div>
-						</div>
-					</div>
-				<div class="row">
-					<div class="col-sm-6 col-sm-offset-2 scatter">
-						<div id="svgscatter"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
+
+<head>
+    <title>Eindproject MPROG - Jochem Bruins</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.2.5/d3-annotation.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/combined.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/bar.js"></script>
+    <script type="text/javascript" src="js/plot.js"></script>
+</head>
+
+<body>
+    <!-- Navigation bar from https://www.w3schools.com/Bootstrap/bootstrap_navbar.asp -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://www.linkedin.com/in/jochem-bruins-8954b9129">Jochem Bruins</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Datavisualisatie</a></li>
+                    <li><a href="sources.html">Bronnen</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid text-center">
+        <div class="row" id="combi">
+            <div class="col-sm-7 col-sm-offset-1">
+                <div id="containercombi"></div>
+            </div>
+            <div class="col-sm-3">
+                <h4>Uitleg</h4>
+                <div id="explain">
+                    <p>De verwarde persoon komt steeds vaker voor in de Nederlandse media. De lijngrafiek hiernaast toont de ontwikkeling van het aantal artikelen over verwarde personen in de Nederlandse dagbladen.</p>
+                    <p>Maar in hoeverre is de toename aan media-aandacht een weerspiegeling van de werkelijkheid? Klik op de knop om meer te weten te komen over E33-meldingen in Nederland. Dit zijn meldingen over incidenten met verwarde personen die binnenkomen bij de politie.</p>
+                    <p>Gebruik: Ga met de muis over de staven van de diagrammen om de absolute waardes te zien. Klik op een gemeente in de kaart om de staafdiagram naast de kaart te veranderen.</p>
+                </div>
+                <button type="button" class="btn .btn-default .btn-block" onclick="updateCombi()">Toon E33-meldingen</button>
+            </div>
+        </div>
+        <div class="row" id="mapbar" style="visibility:hidden;">
+            <div class="col-sm-1">
+                <div class="slidecontainer">
+                    <!-- slider from https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+                    <input type="range" min="2013" max="2017" value="2017" class="slider" id="myRange" oninput="updateMap(this.value)">
+                    <span id="slideroutput">Selecteer een jaar: <span id="slidertext">2017</span></span>
+                </div>
+            </div>
+            <div class="col-sm-5 no-margin">
+                <div id="svgContainer">
+                    E33-meldingen per gemeente
+                    <object id="svgmap" data="data/Nederland_gemeenten.svg" type="image/svg+xml"></object>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div id="containerbar"></div>
+                    <div id="svgscatter"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-2 scatter">
+                    <div id="svgscatter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

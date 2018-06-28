@@ -1,77 +1,103 @@
 /* index.css - Jochem Bruins (10578811) - Stylesheet for index.html */
 
+
 /* font for whole html */
-html *
-{
-   font-family: 'Montserrat' !important;
+
+html * {
+    font-family: 'Montserrat' !important;
 }
+
 
 /* no margins around navigation bar */
+
 .navbar {
-	margin-bottom: 0!important;
-	border-radius: 0;
+    margin-bottom: 0!important;
+    border-radius: 0;
 }
 
+
 /* style for explanation part */
+
 #explain {
     margin-left: 30px;
     text-align: left;
     font-size: 12px;
 }
 
+
 /* add background color and padding to top part */
+
 #combi {
     padding-top: 35px;
     padding-bottom: 35px;
-    background-color: rgb(247,251,255);
+    background-color: rgb(247, 251, 255);
 }
+
+
 /* add background color and padding to downpart */
+
 #mapbar {
     padding: 35px;
-    background-color: rgb(222,235,247); 
+    background-color: rgb(222, 235, 247);
 }
+
 
 /* same widht for all paths*/
+
 path {
-	stroke-width: 3!important;
-	fill: none;
+    stroke-width: 3!important;
+    fill: none;
 }
+
 
 /* color of line in linegraph */
+
 .line {
-	stroke: #91bfdb;
+    stroke: #91bfdb;
 }
 
+
 /* style of axis */
+
 .axis line,
 .axis path {
     stroke: rgb(193, 193, 193);
     stroke-width: 1.2;
 }
 
+
 /* color of bars */
+
 .bar {
-    fill: rgb(153,112,171);
+    fill: rgb(153, 112, 171);
 }
+
 
 /* colors bar on hover */
+
 .bar:hover {
-    fill: rgb(194,165,207);
+    fill: rgb(194, 165, 207);
 }
 
+
 /* container for title map */
+
 #svgContainer {
     text-align: center;
     font-size: 20px;
 }
 
+
 /* place slider at right position */
+
 .slidecontainer {
     padding-top: 200px;
     width: 200px;
 }
 
+
 /* slider style and transform to vertical */
+
 .slider {
     -webkit-appearance: none;
     height: 15px;
@@ -81,7 +107,9 @@ path {
     transform: rotate(-90deg);
 }
 
+
 /* slider style for thumb */
+
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -92,14 +120,18 @@ path {
     cursor: pointer;
 }
 
+
 /* position for text slider year */
+
 #slideroutput {
     position: absolute;
-    margin-left:20px;
-    margin-top:-20px;
+    margin-left: 20px;
+    margin-top: -20px;
 }
 
+
 /* tooltip style */
+
 .tooltips {
     position: absolute;
     font-size: 16px;
@@ -109,7 +141,9 @@ path {
     text-align: right;
 }
 
+
 /* style info block */
+
 .info {
     position: absolute;
     font-size: 12px;
@@ -123,7 +157,9 @@ path {
     opacity: 0.85;
 }
 
+
 /* style d3 tip. Inspiration from https://github.com/Caged/d3-tip */
+
 .d3-tip {
     line-height: 1;
     padding: 6px;
@@ -133,7 +169,9 @@ path {
     font-size: 13px;
 }
 
+
 /* Creates a small triangle extender for the tooltip */
+
 .d3-tip:after {
     box-sizing: border-box;
     display: inline;
@@ -146,16 +184,20 @@ path {
     text-align: center;
 }
 
+
 /* Style northward tooltips specifically */
+
 .d3-tip.n:after {
     margin: -2px 0 0 0;
     top: 100%;
     left: 0;
 }
 
+
 /* change annotation style */
-.annotation-note-title{
-    color:black;
+
+.annotation-note-title {
+    color: black;
 }
 
 .annotation path {
@@ -167,15 +209,17 @@ path {
     fill: rgb(0, 0, 0)!important;
 }
 
+
 /* deletes margin for selected divs */
+
 .no-margin {
     margin-left: 15px;
     padding-left: 0px!important;
 }
 
+
 /* style for source page */
+
 #sources {
     text-align: left;
 }
-
-
