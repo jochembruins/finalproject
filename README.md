@@ -5,7 +5,7 @@
 https://jochembruins.github.io/finalproject/scripts/index.html
 
 ## Link demo
-https://vimeo.com/user42525471/review/277547845/25d0221ff2
+https://vimeo.com/277547845
 
 ## Doel
 Deze datavisualitatie toont de toename van media-aandacht voor incidenten met verwarde personen en onderzoekt of dit een correcte afspiegeling is van de werkelijkheid. Verder laat het zien of deze toename mogelijk samenhangt met de uitgaven aan de GGZ.
